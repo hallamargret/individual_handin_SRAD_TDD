@@ -1,3 +1,5 @@
+import re
+
 def Add(numbers):
     #empty string
     if numbers == "":
@@ -5,9 +7,12 @@ def Add(numbers):
     elif len(numbers) == 1:
         return int(numbers)
     else:
-        the_sum = 0
-        numbers_list = numbers.split(",")
-        for num in numbers_list:
-            the_sum += int(num)
-        return the_sum
-        
+        return many_numbers(numbers)
+
+
+def many_numbers(numbers):
+    the_sum = 0
+    numbers_list = re.split(",|\n", numbers)
+    for num in numbers_list:
+        the_sum += int(num)
+    return the_sum
