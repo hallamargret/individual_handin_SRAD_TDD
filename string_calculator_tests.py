@@ -17,3 +17,6 @@ def test_unknown_numbers_of_numbers():
 
 def test_new_lines_as_a_delimiter_between_nums():
     assert string_calculator.Add("1\n2,3") == 6
+
+def test_ignore_numbers_bigger_than_1000():
+    assert string_calculator.Add("1001,2") == 2

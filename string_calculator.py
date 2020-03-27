@@ -14,5 +14,6 @@ def many_numbers(numbers):
     the_sum = 0
     numbers_list = re.split(",|\n", numbers)
     for num in numbers_list:
-        the_sum += int(num)
+        if int(num) <= 1000:
+            the_sum += int(num)
     return the_sum
