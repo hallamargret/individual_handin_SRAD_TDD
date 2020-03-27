@@ -16,7 +16,14 @@ def Add(numbers):
 def many_numbers(numbers):
     the_sum = 0
     negative_num_str = "Negatives not allowed: "
-    numbers_list = re.split(",|\n", numbers)
+    delim = ",|\n"
+    if numbers[0] == "/":
+        #numbers have different delimiter, find it in the delimiter handler
+        numbers_list = delimiter_handler(numbers)
+    else:
+        #numbers have "normal" delimeters, comma and a whitespace
+        numbers_list = re.split(delim, numbers)
+
     for num in numbers_list:
         if int(num) <= 1000 and int(num) > 0:
             the_sum += int(num)
@@ -30,3 +37,14 @@ def many_numbers(numbers):
         raise NegativeNumError(negative_num_str)
         
     return the_sum
+
+
+def delimiter_handler(numbers):
+    #finds the new delimiter and splits numbers so we get a list of the numbers
+    delimstart = 2
+    delim = numbers[delimstart]
+    while numbers[(delimstart + 1)] != "\n":
+        delim += numbers[delimstart]
+        delimstart += 1
+    numbers_list = numbers.split("\n")[1].split(delim)
+    return numbers_list

@@ -26,3 +26,7 @@ def test_ignore_numbers_bigger_than_1000():
 def test_negative_numbers():
     with pytest.raises(string_calculator.NegativeNumError):
         string_calculator.Add("2,-4,3,-5")
+
+
+def test_different_delimiter():
+    string_calculator.Add("//X\n1X2") == 3
