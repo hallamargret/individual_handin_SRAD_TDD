@@ -1,4 +1,5 @@
 import string_calculator
+import pytest
 
 def test_empty_str():
     assert string_calculator.Add("") == 0
@@ -20,3 +21,8 @@ def test_new_lines_as_a_delimiter_between_nums():
 
 def test_ignore_numbers_bigger_than_1000():
     assert string_calculator.Add("1001,2") == 2
+
+
+def test_negative_numbers():
+    with pytest.raises(string_calculator.NegativeNumError):
+        string_calculator.Add("2,-4,3,-5")
