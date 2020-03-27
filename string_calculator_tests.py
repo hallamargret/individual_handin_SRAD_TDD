@@ -9,3 +9,7 @@ def test_single_number():
 
 def test_two_numbers():
     assert string_calculator.Add("1,2") == 3
+
+
+def test_unknown_numbers_of_numbers():
+    assert string_calculator.Add("1,2,3,4,5") == 15
