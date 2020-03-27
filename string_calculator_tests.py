@@ -5,3 +5,7 @@ def test_empty_str():
 
 def test_single_number():
     assert string_calculator.Add("1") == 1
+
+
+def test_two_numbers():
+    assert string_calculator.Add("1,2") == 3
